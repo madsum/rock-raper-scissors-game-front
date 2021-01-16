@@ -13,7 +13,7 @@ const Navigation = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               <Nav.Link href="/">Register name</Nav.Link>
-              <Nav.Link href="/game">Game</Nav.Link>
+              <Nav.Link href="/game/empty">Game</Nav.Link>
               <Nav.Link href="/result">View Score</Nav.Link>
              </Nav>
           </Navbar.Collapse>
