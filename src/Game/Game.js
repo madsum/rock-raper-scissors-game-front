@@ -1,4 +1,5 @@
   import React, { Component } from 'react'
+  import history from '../history';
   import Player from '../Player/Player';
   import CurdApi from '../CurdUtil/CurdApi';
   import './Game.css'
@@ -74,8 +75,9 @@
     };
 
     componentDidMount(){
-      if(this.props.match.params.title == 'empty'){
+      if(this.props.match.params.title === 'empty'){
         alert('First Register a player name to begin the game');
+        history.push('/');
       }
       this.setState({playerName: this.props.match.params.title});
       
@@ -83,11 +85,8 @@
 
     render() {
       const { player, machine, winner } = this.state;
+
       return (
-        this.state.playerName === '' || this.state.playerName === 'empty' ? 
-        <>
-          <h1>First Register a player name to begin the game</h1>
-        </> :
         <>
           <h1 className="h2" >
             {this.state.playerName} welcome in  <br/>Rock Paper Scissors Game
