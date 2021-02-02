@@ -21,7 +21,9 @@
           machine: weapons[1],
           winner: "",
           round: 0,
-          playerName: ""
+          playerName: "",
+          playerPoint: 0,
+          machinePoint: 0
         };      
     }
           
@@ -65,14 +67,22 @@
         result.name = this.state.playerName;
         result.result = Result.WIN;
         CurdApi.postScore(result);
+        this.setState({
+          playerPoint: this.state.playerPoint + 1
+        });        
         return this.state.playerName + ' Wins!';
       } else {
         result.name = 'Machine';
         result.result = Result.WIN;
         CurdApi.postScore(result);
+        this.setState({
+          machinePoint: this.state.machinePoint + 1
+        });        
+
         return "Machine  Wins!";
       }
     };
+
 
     componentDidMount(){
       if(this.props.match.params.title === 'empty'){
@@ -84,7 +94,7 @@
     }
 
     render() {
-      const { player, machine, winner } = this.state;
+      const { player, machine, winner, playerPoint, machinePoint } = this.state;
 
       return (
         <>
@@ -95,6 +105,17 @@
           <div >
             <label className="round">
             Round:  {this.state.round}
+            </label>
+            <br/><label className="playerPoint">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Player Point:  {this.state.playerPoint}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Machine Point:  {this.state.machinePoint}
             </label>
           <div>
             <label className="label">&nbsp;&nbsp; {this.state.playerName} :  

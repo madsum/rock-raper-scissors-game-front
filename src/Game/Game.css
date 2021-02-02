@@ -43,8 +43,14 @@ body {
   color: rgb(59, 110, 219);
   text-transform: uppercase;
   text-decoration: underline;
-
 }
+
+.playerPoint {
+  margin-left: 400px;
+  color: rgb(243, 8, 204);
+  text-transform: uppercase;
+}
+
 
 .winner {
   width: 100px;
